@@ -3,10 +3,12 @@
 
 using namespace std;
 
+//Declaring a LinkedList to store words
 struct listOfWords {
     string word;
     struct listOfWords *next;
 };
+//Definition of a function to store words backwards
 listOfWords* insertElement(listOfWords* ex, string newWord)
 {
     listOfWords *newElement = new listOfWords;
@@ -18,12 +20,16 @@ listOfWords* insertElement(listOfWords* ex, string newWord)
 
 int main()
 {
+    //Prompt the user
     cout << "Enter your sentence: " << endl;
+    //Take and store the input sentence
     string enteredSentence;
     getline(cin, enteredSentence);
     string auxiliary = "";
+    //Definition of the LinkedList
     listOfWords* storage = new listOfWords;
     storage = nullptr;
+    //Separating words and storing them into the list backwards
     for (int i = 0; i < enteredSentence.size(); i++)
     {
         if(enteredSentence[i] != ' ')
@@ -37,6 +43,7 @@ int main()
         }
     }
     storage = insertElement(storage, auxiliary);
+    //Printing out the whole list
     while(storage != nullptr)
     {
         cout << storage->word << " ";
