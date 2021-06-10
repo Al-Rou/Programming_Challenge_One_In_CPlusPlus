@@ -9,7 +9,20 @@ struct listOfWords {
 };
 void insertElement(listOfWords* ex, string newWord)
 {
-
+    listOfWords *newElement = new listOfWords;
+    newElement->word = newWord;
+    newElement->next = nullptr;
+    if(ex == nullptr)
+    {
+        ex = newElement;
+        return;
+    }
+    else
+    {
+        newElement->next = ex;
+        ex = newElement;
+        return;
+    }
 }
 
 int main()
@@ -18,7 +31,9 @@ int main()
     string enteredSentence;
     cin >> enteredSentence;
     string auxiliary = "";
-    for (int i = 0; i < enteredSentence.size(); i++)
+    listOfWords* storage = new listOfWords;
+    storage = nullptr;
+    /*for (int i = 0; i < enteredSentence.size(); i++)
     {
         if(enteredSentence[i] != ' ')
         {
@@ -26,8 +41,17 @@ int main()
         }
         else
         {
-
+            insertElement(storage, auxiliary);
+            auxiliary = "";
         }
+    }
+    insertElement(storage, auxiliary);*/
+    storage->word = "Hi";
+    storage->next = nullptr;
+    while(storage->next != nullptr)
+    {
+        cout << storage->word << " ";
+        storage = storage->next;
     }
     return 0;
 }
